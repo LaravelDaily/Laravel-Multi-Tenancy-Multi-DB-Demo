@@ -26,10 +26,10 @@ return [
      * To configure their behavior, see the config keys below.
      */
     'bootstrappers' => [
-//        Stancl\Tenancy\Bootstrappers\DatabaseTenancyBootstrapper::class,
-//        Stancl\Tenancy\Bootstrappers\CacheTenancyBootstrapper::class,
-//        Stancl\Tenancy\Bootstrappers\FilesystemTenancyBootstrapper::class,
-//        Stancl\Tenancy\Bootstrappers\QueueTenancyBootstrapper::class,
+        Stancl\Tenancy\Bootstrappers\DatabaseTenancyBootstrapper::class,
+        Stancl\Tenancy\Bootstrappers\CacheTenancyBootstrapper::class,
+        Stancl\Tenancy\Bootstrappers\FilesystemTenancyBootstrapper::class,
+        Stancl\Tenancy\Bootstrappers\QueueTenancyBootstrapper::class,
         // Stancl\Tenancy\Bootstrappers\RedisTenancyBootstrapper::class, // Note: phpredis is needed
     ],
 
@@ -49,7 +49,7 @@ return [
          * Tenant database names are created like this:
          * prefix + tenant_id + suffix.
          */
-        'prefix' => 'tenant',
+        'prefix' => 'tenancy_',
         'suffix' => '',
 
         /**
@@ -133,7 +133,7 @@ return [
          * disable asset() helper tenancy and explicitly use tenant_asset() calls in places
          * where you want to use tenant-specific assets (product images, avatars, etc).
          */
-        'asset_helper_tenancy' => true,
+        'asset_helper_tenancy' => false,
     ],
 
     /**
