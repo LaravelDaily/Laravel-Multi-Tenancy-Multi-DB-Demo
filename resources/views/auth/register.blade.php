@@ -16,6 +16,16 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
+        <!-- Subdomain -->
+        <div class="mt-2">
+            <x-input-label for="subdomain" :value="__('Subdomain')" />
+
+            <div class="flex items-baseline">
+                <x-text-input id="subdomain" class="block mt-1 mr-2 w-full" type="text" name="subdomain" :value="old('subdomain')" required />
+                .{{ config('tenancy.central_domains')[0] }}
+            </div>
+        </div>
+
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
