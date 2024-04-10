@@ -46,15 +46,13 @@ class RegisteredUserController extends Controller
         $tenant = Tenant::create([
             'name' => $request->name,
         ]);
-        $tenant->domains()->create([
-            'domain' => $request->subdomain . '.' . config('tenancy.central_domains')[0],
-        ]);
+        $tenant->createDomain($request->subdomain);
         $user->tenants()->attach($tenant->id);
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect('http://' . $request->subdomain . '.'. config('tenancy.central_domains')[0] .'/dashboard');
+        return redirect('http://' . $request->subdomain . '.'. config('tenancy.central_domains')[0] . route('dashboard', absolute: false));
     }
 }
